@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Prompts - Promptix.live</title>
+    <meta name="description" content="Browse our complete collection of AI prompts.">
+        
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo-icon.png">
+    <link rel="shortcut icon" type="image/png" href="logo-icon.png">
+    <link rel="apple-touch-icon" href="logo-icon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-bg"></div>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                
+                <span>Promptix.live</span>
+            </a>
+            <nav class="main-nav" id="mainNav">
+                <button class="nav-close-btn" id="navCloseBtn"><i class="ph ph-x"></i></button>
+                <a href="index.html">Home</a>
+                <a href="prompts.html" class="active">Prompts</a>
+                <a href="categories.html">Categories</a>
+                <a href="popular.html">Popular</a>
+                <a href="how-it-works.html">How it works</a>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-toggle" id="mobileToggle"><i class="ph ph-list"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-main">
+        <div class="container">
+            <header class="page-header">
+                <h1>All Prompts</h1>
+                <p>Explore our complete library of AI prompts.</p>
+
+                <div class="search-container full-width">
+                    <div class="search-input-wrapper">
+                        <i class="ph ph-magnifying-glass search-icon"></i>
+                        <input type="text" id="searchInput" placeholder="Search prompts...">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Filters -->
+            <section class="filters" id="categories">
+                <div class="filter-scroll">
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <div id="categoryFilters" style="display:contents"></div>
+                </div>
+            </section>
+
+            <!-- Banner Ad -->
+            <div style="text-align: center; padding: 20px 0; background: #f8f9fa; margin: 20px 0;">
+                <script>
+                    atOptions = {
+                        'key': '5c11683c0df350c330417ad57aa84153',
+                        'format': 'iframe',
+                        'height': 50,
+                        'width': 320,
+                        'params': {}
+                    };
+                </script>
+                <script src="https://www.highperformanceformat.com/5c11683c0df350c330417ad57aa84153/invoke.js"></script>
+            </div>
+
+            <!-- Prompts Grid -->
+            <div class="prompts-grid" id="promptsGrid">
+                <div class="loading-state">Loading library...</div>
+            </div>
+
+            <div class="load-more-container">
+                <button class="btn btn-outline" id="loadMore">Load More <i class="ph ph-caret-down"></i></button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                     <span>Promptix.live</span>
+                </a>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Library</h4>
+                    <a href="popular.html">Trending</a>
+                    <a href="prompts.html">Newest</a>
+                    <a href="categories.html">Categories</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <a href="about.html">About Us</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="privacy.html">Privacy</a>
+                </div>
+            </div>
+        </div>
+        <div class="container copyright">
+            <p>&copy; 2024 Promptix.live.</p>
+        </div>
+    </footer>
+
+    <!-- Preview Modal -->
+    <div class="preview-page" id="previewPage">
+        <header class="preview-header">
+            <button class="back-btn" id="previewBackBtn"><i class="ph ph-arrow-left"></i> Back</button>
+        </header>
+        <main class="preview-content">
+            <div class="preview-layout">
+                <div class="preview-image-container"><img id="previewImage" src="" alt=""></div>
+                <div class="preview-details">
+                    <span class="detail-label">PROMPT DETAILS</span>
+                    <h1 class="preview-title" id="previewTitle"></h1>
+                    <div class="preview-meta"><span class="author">By @Promptix</span></div>
+                    <div class="prompt-text-card">
+                        <pre id="previewPromptText"></pre>
+                        <button class="copy-action-btn primary" id="previewCopyBtn"><i class="ph ph-copy"></i>
+                            Copy</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

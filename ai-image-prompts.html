@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Prompts - Free Text to Image Generation Prompts | Promptix</title>
+    <meta name="description"
+        content="Discover 500+ free AI image prompts for Midjourney, DALL·E, and Stable Diffusion. Copy-paste ready prompts for stunning AI art generation.">
+    <meta name="keywords"
+        content="AI image prompts, AI art prompts, text to image prompts, Midjourney prompts, DALL-E prompts, image generation prompts, AI art generator prompts">
+    <link rel="canonical" href="https://promptix.live/ai-image-prompts.html">
+        
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo-icon.png">
+    <link rel="shortcut icon" type="image/png" href="logo-icon.png">
+    <link rel="apple-touch-icon" href="logo-icon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "AI Image Prompts",
+      "description": "Free AI image prompts for Midjourney, DALL·E, and Stable Diffusion",
+      "url": "https://promptix.live/ai-image-prompts.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Promptix",
+        "url": "https://promptix.live"
+      }
+    }
+    </script>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-bg"></div>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                
+                <span>Promptix.live</span>
+            </a>
+            <nav class="main-nav" id="mainNav">
+                <button class="nav-close-btn" id="navCloseBtn"><i class="ph ph-x"></i></button>
+                <a href="index.html">Home</a>
+                <a href="prompts.html">Prompts</a>
+                <a href="categories.html" class="active">Categories</a>
+                <a href="popular.html">Popular</a>
+                <a href="how-it-works.html">How it works</a>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-toggle" id="mobileToggle"><i class="ph ph-list"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-main">
+        <div class="container">
+            <!-- Breadcrumbs -->
+            <nav style="padding: 20px 0; font-size: 0.9rem; color: #666;">
+                <a href="index.html" style="color: #6366f1; text-decoration: none;">Home</a>
+                <span style="margin: 0 8px;">/</span>
+                <a href="categories.html" style="color: #6366f1; text-decoration: none;">Categories</a>
+                <span style="margin: 0 8px;">/</span>
+                <span>AI Image Prompts</span>
+            </nav>
+
+            <!-- SEO Content Section -->
+            <article style="max-width: 900px; margin: 0 auto 40px;">
+                <header class="page-header" style="margin-bottom: 30px;">
+                    <h1>AI Image Prompts</h1>
+                    <p style="font-size: 1.1rem; color: #666;">Create stunning visuals with ready-to-use AI prompts for
+                        Midjourney, DALL·E, and Stable Diffusion</p>
+                </header>
+
+                <!-- Intro Paragraph -->
+                <div
+                    style="background: white; padding: 32px; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 40px;">
+                    <p style="font-size: 1.05rem; line-height: 1.8; color: #333; margin-bottom: 20px;">
+                        AI image prompts are text descriptions that guide AI tools like <strong>Midjourney</strong>,
+                        <strong>DALL·E</strong>, and <strong>Stable Diffusion</strong> to create stunning visuals.
+                        Whether you're a designer, content creator, or AI enthusiast, using well-crafted prompts helps
+                        you generate professional images in seconds. At Promptix, we offer a curated library of AI image
+                        generation prompts designed for creators who want high-quality results without trial and error.
+                        Our collection includes prompts for realistic photos, digital art, abstract designs, and
+                        creative illustrations. Each prompt is copy-paste ready and optimized for popular <a
+                            href="how-it-works.html" style="color: #6366f1; text-decoration: none;">text-to-image
+                            generators</a>. Browse our free <a href="categories.html?category=Art"
+                            style="color: #6366f1; text-decoration: none;">AI art prompts</a> below and start creating
+                        today.
+                    </p>
+                </div>
+
+                <!-- What are AI Image Prompts -->
+                <section style="margin-bottom: 40px;">
+                    <h2 style="font-size: 1.5rem; font-weight: 700; color: #1a1a1a; margin-bottom: 16px;">What are AI
+                        Image Prompts?</h2>
+                    <p style="font-size: 1rem; line-height: 1.8; color: #555;">
+                        AI image prompts are text instructions that tell AI models what kind of image to generate. A
+                        good prompt includes details about subject, style, lighting, composition, and mood. For example,
+                        instead of "a cat," a detailed prompt would be "a fluffy orange cat sitting on a windowsill,
+                        soft morning light, watercolor style." The more specific your prompt, the better your
+                        AI-generated image will be. Check out our <a href="popular.html"
+                            style="color: #6366f1; text-decoration: none;">popular prompts</a> for examples.
+                    </p>
+                </section>
+
+                <!-- How to Use -->
+                <section style="margin-bottom: 40px;">
+                    <h2 style="font-size: 1.5rem; font-weight: 700; color: #1a1a1a; margin-bottom: 16px;">How to Use AI
+                        Image Prompts</h2>
+                    <p style="font-size: 1rem; line-height: 1.8; color: #555; margin-bottom: 16px;">
+                        Using AI image prompts is simple. Copy any prompt from our library, paste it into your preferred
+                        AI tool (Midjourney, DALL·E, Stable Diffusion, or Leonardo AI), and generate. You can customize
+                        prompts by changing subjects, styles, or adding specific details. Experiment with different
+                        combinations to achieve your desired visual output.
+                    </p>
+                    <div
+                        style="background: #f8f9fa; padding: 20px; border-radius: 12px; border-left: 4px solid #6366f1;">
+                        <p style="font-size: 0.95rem; line-height: 1.6; color: #555; margin: 0;">
+                            <strong>💡 Pro Tip:</strong> Start with our ready-to-use prompts, then modify them to match
+                            your creative vision. Learn more in our <a href="how-it-works.html"
+                                style="color: #6366f1; text-decoration: none;">How it Works</a> guide.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Best AI Tools -->
+                <section style="margin-bottom: 40px;">
+                    <h2 style="font-size: 1.5rem; font-weight: 700; color: #1a1a1a; margin-bottom: 16px;">Best AI Tools
+                        for Image Generation</h2>
+                    <div style="display: grid; gap: 16px;">
+                        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb;">
+                            <strong style="color: #1a1a1a; font-size: 1.05rem;">Midjourney</strong>
+                            <p style="color: #666; margin: 8px 0 0; font-size: 0.95rem;">Known for artistic and highly
+                                detailed images. Perfect for creative and conceptual work.</p>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb;">
+                            <strong style="color: #1a1a1a; font-size: 1.05rem;">DALL·E 3</strong>
+                            <p style="color: #666; margin: 8px 0 0; font-size: 0.95rem;">Great for realistic and
+                                creative compositions with excellent text understanding.</p>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb;">
+                            <strong style="color: #1a1a1a; font-size: 1.05rem;">Stable Diffusion</strong>
+                            <p style="color: #666; margin: 8px 0 0; font-size: 0.95rem;">Open-source with full
+                                customization options for advanced users.</p>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb;">
+                            <strong style="color: #1a1a1a; font-size: 1.05rem;">Leonardo AI</strong>
+                            <p style="color: #666; margin: 8px 0 0; font-size: 0.95rem;">Ideal for game assets, concept
+                                art, and consistent character generation.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Popular Styles -->
+                <section style="margin-bottom: 40px;">
+                    <h2 style="font-size: 1.5rem; font-weight: 700; color: #1a1a1a; margin-bottom: 16px;">Popular AI
+                        Image Prompt Styles</h2>
+                    <p style="font-size: 1rem; line-height: 1.8; color: #555; margin-bottom: 16px;">
+                        Our library includes prompts for various artistic styles: photorealistic images, digital art, 3D
+                        renders, watercolor paintings, anime illustrations, fantasy art, minimalist designs, and
+                        abstract compositions. Browse by style to find prompts that match your creative vision.
+                    </p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px;">
+                        <a href="prompts.html"
+                            style="background: #f3f4f6; padding: 8px 16px; border-radius: 20px; text-decoration: none; color: #374151; font-size: 0.9rem; transition: all 0.2s;">Photorealistic</a>
+                        <a href="prompts.html"
+                            style="background: #f3f4f6; padding: 8px 16px; border-radius: 20px; text-decoration: none; color: #374151; font-size: 0.9rem; transition: all 0.2s;">Digital
+                            Art</a>
+                        <a href="prompts.html"
+                            style="background: #f3f4f6; padding: 8px 16px; border-radius: 20px; text-decoration: none; color: #374151; font-size: 0.9rem; transition: all 0.2s;">3D
+                            Render</a>
+                        <a href="prompts.html"
+                            style="background: #f3f4f6; padding: 8px 16px; border-radius: 20px; text-decoration: none; color: #374151; font-size: 0.9rem; transition: all 0.2s;">Watercolor</a>
+                        <a href="prompts.html"
+                            style="background: #f3f4f6; padding: 8px 16px; border-radius: 20px; text-decoration: none; color: #374151; font-size: 0.9rem; transition: all 0.2s;">Anime</a>
+                        <a href="prompts.html"
+                            style="background: #f3f4f6; padding: 8px 16px; border-radius: 20px; text-decoration: none; color: #374151; font-size: 0.9rem; transition: all 0.2s;">Fantasy
+                            Art</a>
+                        <a href="prompts.html"
+                            style="background: #f3f4f6; padding: 8px 16px; border-radius: 20px; text-decoration: none; color: #374151; font-size: 0.9rem; transition: all 0.2s;">Abstract</a>
+                        <a href="prompts.html"
+                            style="background: #f3f4f6; padding: 8px 16px; border-radius: 20px; text-decoration: none; color: #374151; font-size: 0.9rem; transition: all 0.2s;">Minimalist</a>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Banner Ad -->
+            <div style="text-align: center; padding: 20px 0; background: #f8f9fa; margin: 20px 0;">
+                <script>
+                    atOptions = {
+                        'key': '5c11683c0df350c330417ad57aa84153',
+                        'format': 'iframe',
+                        'height': 50,
+                        'width': 320,
+                        'params': {}
+                    };
+                </script>
+                <script src="https://www.highperformanceformat.com/5c11683c0df350c330417ad57aa84153/invoke.js"></script>
+            </div>
+
+            <!-- Prompts Grid Section -->
+            <section style="margin-top: 60px;">
+                <div class="section-header" style="margin-bottom: 30px;">
+                    <h2>Browse AI Image Prompts</h2>
+                    <p style="color: #666; margin-top: 8px;">Copy any prompt below and paste it into your favorite AI
+                        image generator</p>
+                </div>
+
+                <!-- Filter by subcategory if needed -->
+                <div class="filters" id="categories" style="margin-bottom: 30px;">
+                    <div class="filter-scroll">
+                        <button class="filter-btn active" data-category="AI Image Prompts">All Image Prompts</button>
+                    </div>
+                </div>
+
+                <!-- Prompts Grid -->
+                <div class="prompts-grid" id="promptsGrid">
+                    <div class="loading-state">Loading AI image prompts...</div>
+                </div>
+            </section>
+
+            <!-- Related Categories -->
+            <section style="margin-top: 60px; padding: 40px; background: #f8f9fa; border-radius: 16px;">
+                <h3
+                    style="font-size: 1.3rem; font-weight: 700; color: #1a1a1a; margin-bottom: 20px; text-align: center;">
+                    Explore Related Categories</h3>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; max-width: 800px; margin: 0 auto;">
+                    <a href="categories.html?category=Art"
+                        style="background: white; padding: 20px; border-radius: 12px; text-decoration: none; text-align: center; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                        <i class="ph-fill ph-palette"
+                            style="font-size: 2rem; color: #6366f1; display: block; margin-bottom: 10px;"></i>
+                        <strong style="color: #1a1a1a; display: block; margin-bottom: 4px;">AI Art Prompts</strong>
+                        <span style="font-size: 0.85rem; color: #666;">Creative artwork prompts</span>
+                    </a>
+                    <a href="popular.html"
+                        style="background: white; padding: 20px; border-radius: 12px; text-decoration: none; text-align: center; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                        <i class="ph-fill ph-trending-up"
+                            style="font-size: 2rem; color: #6366f1; display: block; margin-bottom: 10px;"></i>
+                        <strong style="color: #1a1a1a; display: block; margin-bottom: 4px;">Popular Prompts</strong>
+                        <span style="font-size: 0.85rem; color: #666;">Most used prompts</span>
+                    </a>
+                    <a href="categories.html?category=Creative"
+                        style="background: white; padding: 20px; border-radius: 12px; text-decoration: none; text-align: center; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                        <i class="ph-fill ph-lightbulb"
+                            style="font-size: 2rem; color: #6366f1; display: block; margin-bottom: 10px;"></i>
+                        <strong style="color: #1a1a1a; display: block; margin-bottom: 4px;">Creative Prompts</strong>
+                        <span style="font-size: 0.85rem; color: #666;">Unique creative ideas</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    
+                    <span>Promptix.live</span>
+                </a>
+                <p>Curating the world's best AI prompts.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Library</h4>
+                    <a href="popular.html">Trending</a>
+                    <a href="prompts.html">Newest</a>
+                    <a href="categories.html">Categories</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <a href="about.html">About Us</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="privacy.html">Privacy</a>
+                </div>
+            </div>
+        </div>
+        <div class="container copyright">
+            <p>&copy; 2024 Promptix.live. All rights reserved. Built for creators.</p>
+        </div>
+    </footer>
+
+    <!-- Preview Modal -->
+    <div class="preview-page" id="previewPage">
+        <header class="preview-header">
+            <button class="back-btn" id="previewBackBtn"><i class="ph ph-arrow-left"></i> Back</button>
+        </header>
+        <main class="preview-content">
+            <div class="preview-layout">
+                <div class="preview-image-container"><img id="previewImage" src="" alt=""></div>
+                <div class="preview-details">
+                    <span class="detail-label">PROMPT DETAILS</span>
+                    <h1 class="preview-title" id="previewTitle"></h1>
+                    <div class="preview-meta"><span class="author">By @Promptix</span></div>
+                    <div class="prompt-text-card">
+                        <pre id="previewPromptText"></pre>
+                        <button class="copy-action-btn primary" id="previewCopyBtn"><i class="ph ph-copy"></i>
+                            Copy</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Override the category filter for this specific page
+        window.addEventListener('DOMContentLoaded', function () {
+            currentCategory = 'AI Image Prompts';
+        });
+    </script>
+</body>
+
+</html>

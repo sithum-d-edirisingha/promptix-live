@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promptix.live - AI Prompts, Ready to Copy</title>
+    <meta name="description"
+        content="Browse our curated collection of high-performance prompts for ChatGPT, Midjourney, and Claude.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo-icon.png">
+    <link rel="shortcut icon" type="image/png" href="logo-icon.png">
+    <link rel="apple-touch-icon" href="logo-icon.png">
+
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons via CDN (for UI icons) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-bg"></div>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                
+                <span>Promptix.live</span>
+            </a>
+
+            <!-- Desktop Nav / Mobile Overlay -->
+            <nav class="main-nav" id="mainNav">
+                <button class="nav-close-btn" id="navCloseBtn">
+                    <i class="ph ph-x"></i>
+                </button>
+                <a href="index.html" class="active">Home</a>
+                <a href="prompts.html">Prompts</a>
+                <a href="categories.html">Categories</a>
+                <a href="popular.html">Popular</a>
+                <a href="how-it-works.html">How it works</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="ph ph-list"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1 class="hero-title">AI Prompts, <span class="text-blue">Ready to Copy</span></h1>
+                <p class="hero-subtitle">
+                    Browse our curated collection of high-performance prompts for ChatGPT,<br>
+                    Midjourney, and Claude. Expert-tested and ready to use.
+                </p>
+
+                <div class="search-container">
+                    <div class="search-input-wrapper">
+                        <i class="ph ph-magnifying-glass search-icon"></i>
+                        <input type="text" id="searchInput"
+                            placeholder="Search for 'Marketing', 'Python code', or 'Logos'...">
+                    </div>
+                    <!-- Direct search to prompts page logic will be in app.js -->
+                </div>
+
+                <!-- Quick Pills -->
+                <div class="hero-pills">
+                    <span class="pill-label">Popular:</span>
+                    <a href="prompts.html" class="hero-pill">ChatGPT</a>
+                    <a href="prompts.html" class="hero-pill">Business</a>
+                    <a href="prompts.html" class="hero-pill">Coding</a>
+                    <a href="prompts.html" class="hero-pill">Art</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Banner Ad -->
+        <div style="text-align: center; padding: 20px 0; background: #f8f9fa;">
+            <script>
+                atOptions = {
+                    'key': '5c11683c0df350c330417ad57aa84153',
+                    'format': 'iframe',
+                    'height': 50,
+                    'width': 320,
+                    'params': {}
+                };
+            </script>
+            <script src="https://www.highperformanceformat.com/5c11683c0df350c330417ad57aa84153/invoke.js"></script>
+        </div>
+
+        <!-- Trending / Top Prompts -->
+        <section class="prompts-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Trending Prompts</h2>
+                    <a href="popular.html" class="view-all">View all <i class="ph ph-arrow-right"></i></a>
+                </div>
+
+                <!-- Only show first 6-8 items here -->
+                <div class="prompts-grid" id="promptsGrid">
+                    <!-- Prompts will be injected here via JS -->
+                    <div class="loading-state">Loading prompts...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>How it Works</h2>
+                    <p>Get started in seconds. No account required.</p>
+                </div>
+
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-icon"><i class="ph ph-magnifying-glass"></i></div>
+                        <h3>1. Browse</h3>
+                        <p>Explore thousands of categorized prompts for any use case.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon"><i class="ph ph-copy"></i></div>
+                        <h3>2. Copy</h3>
+                        <p>One-click copy the exact prompt text to your clipboard.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon"><i class="ph ph-robot"></i></div>
+                        <h3>3. Paste & Create</h3>
+                        <p>Paste into ChatGPT, Claude or Midjourney and generate results.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    
+                    <span>Promptix.live</span>
+                </a>
+                <p>Curating the world's best AI prompts.</p>
+            </div>
+
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Library</h4>
+                    <a href="popular.html">Trending</a>
+                    <a href="prompts.html">Newest</a>
+                    <a href="categories.html">Categories</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <a href="about.html">About Us</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="privacy.html">Privacy</a>
+                </div>
+            </div>
+
+            <div class="footer-social">
+                <a href="#" class="social-icon"><i class="ph ph-share-network"></i></a>
+                <a href="#" class="social-icon"><i class="ph ph-envelope-simple"></i></a>
+            </div>
+        </div>
+        <div class="container copyright">
+            <p>&copy; 2024 Promptix.live. All rights reserved. Built for creators.</p>
+        </div>
+    </footer>
+
+    <!-- Preview Modal (Global) - we can inject or keep in file. 
+         Ideally app.js handles the injection or we keep it here. 
+         Let's keep it here for simplicity. 
+    -->
+    <div class="preview-page" id="previewPage">
+        <header class="preview-header">
+            <button class="back-btn" id="previewBackBtn">
+                <i class="ph ph-arrow-left"></i> Back
+            </button>
+        </header>
+        <main class="preview-content">
+            <div class="preview-layout">
+                <div class="preview-image-container">
+                    <img id="previewImage" src="" alt="Prompt Preview">
+                </div>
+                <div class="preview-details">
+                    <span class="detail-label">PROMPT DETAILS</span>
+                    <h1 class="preview-title" id="previewTitle">Prompt Title</h1>
+                    <div class="preview-meta">
+                        <span class="author">By @Promptix</span>
+                        <span class="dot">•</span>
+                        <span class="date" id="previewDate">Just now</span>
+                    </div>
+                    <div class="prompt-text-card">
+                        <pre id="previewPromptText">...</pre>
+                        <button class="copy-action-btn primary" id="previewCopyBtn">
+                            <i class="ph ph-copy"></i> Copy Prompt
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Use app.js -->
+    <script src="app.js"></script>
+</body>
+
+</html>

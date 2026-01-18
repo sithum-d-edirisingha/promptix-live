@@ -1,41 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>Promptix Admin</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Promptix.live</title>
+    <!-- Font & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Firebase SDKs (NO Storage - using Cloudinary) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 </head>
+
 <body>
 
-<!-- LOGIN -->
-<div id="loginBox" class="card">
-  <h2>Admin Login</h2>
-  <input type="email" id="email" placeholder="Email" />
-  <input type="password" id="password" placeholder="Password" />
-  <button id="loginBtn">Login</button>
-  <p id="loginError"></p>
-</div>
+    <div id="app">
+        <!-- Auth View -->
+        <div id="loginView" class="auth-container">
+            <div class="login-card">
+                <div class="logo">
+                    <i class="ph-fill ph-asterisk-simple"></i>
+                    <span>Promptix Admin</span>
+                </div>
+                <h2>Welcome Back</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="emailInput" placeholder="admin@promptix.live" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="passwordInput" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width" id="loginBtn">Log In</button>
+                    <p id="loginError" class="error-msg"></p>
+                </form>
+            </div>
+        </div>
 
-<!-- ADMIN PANEL -->
-<div id="adminPanel" style="display:none;">
-  <header>
-    <h1>Promptix Admin Panel</h1>
-    <button id="logoutBtn">Logout</button>
-  </header>
+        <!-- Dashboard View (Hidden by default) -->
+        <div id="dashboardView" class="dashboard-layout hidden">
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+                <i class="ph ph-list"></i>
+            </button>
+            <!-- Sidebar Overlay -->
+            <div class="sidebar-overlay" id="sidebarOverlay"></div>
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <div class="logo">
+                        <i class="ph-fill ph-asterisk-simple"></i>
+                        <span>Admin</span>
+                    </div>
+                </div>
+                <nav class="sidebar-nav">
+                    <button class="nav-item active" onclick="switchTab('home')">
+                        <i class="ph ph-squares-four"></i> Dashboard
+                    </button>
+                    <button class="nav-item" onclick="switchTab('add')">
+                        <i class="ph ph-plus-circle"></i> Add Prompt
+                    </button>
+                    <button class="nav-item" onclick="switchTab('list')">
+                        <i class="ph ph-list-dashes"></i> Manage Prompts
+                    </button>
+                    <button class="nav-item" onclick="switchTab('categories')">
+                        <i class="ph ph-tag"></i> Manage Categories
+                    </button>
+                </nav>
+                <div class="sidebar-footer">
+                    <button class="nav-item logout" id="logoutBtn">
+                        <i class="ph ph-sign-out"></i> Logout
+                    </button>
+                </div>
+            </aside>
 
-  <section class="card">
-    <h3>Add New Prompt</h3>
+            <!-- Main Content -->
+            <main class="main-content">
 
-    <input type="text" id="title" placeholder="Prompt title" />
-    <textarea id="prompt" placeholder="Prompt text"></textarea>
-    <input type="text" id="category" placeholder="Category" />
-    <input type="file" id="image" />
+                <!-- Home Tab -->
+                <div id="tab-home" class="tab-content">
+                    <header class="content-header">
+                        <h1>Dashboard Overview</h1>
+                    </header>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>Total Prompts</h3>
+                            <p class="stat-value" id="statTotalPrompts">-</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Categories</h3>
+                            <p class="stat-value" id="statCategories">-</p>
+                        </div>
+                    </div>
+                </div>
 
-    <button id="addPromptBtn">Add Prompt</button>
-    <p id="status"></p>
-  </section>
-</div>
+                <!-- Add/Edit Tab -->
+                <div id="tab-add" class="tab-content hidden">
+                    <header class="content-header">
+                        <h1 id="formTitle">Add New Prompt</h1>
+                    </header>
+                    <div class="form-container">
+                        <form id="promptForm">
+                            <input type="hidden" id="promptId"> <!-- Hidden ID for edits -->
 
-<script type="module" src="app.js"></script>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Title</label>
+                                    <input type="text" id="pTitle" required placeholder="e.g. SEO Blog Generator">
+                                </div>
+                                <div class="form-group">
+                                    <label>Category</label>
+                                    <select id="pCategory" required>
+                                        <!-- Populated via JS -->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Description (Short)</label>
+                                <input type="text" id="pDescription" required placeholder="Brief explanation...">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Prompt Image (Optional)</label>
+                                <input type="file" id="pImage" accept="image/*">
+                                <small style="color: var(--text-muted, #888); display: block; margin-top: 8px;">Upload
+                                    an image for this prompt (optional)</small>
+                                <div id="imagePreview" style="margin-top: 12px; display: none;">
+                                    <img id="previewImg"
+                                        style="max-width: 200px; border-radius: 8px; border: 1px solid #333;" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Prompt Text</label>
+                                <textarea id="pText" rows="6" required
+                                    placeholder="The actual prompt content..."></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Tags (comma separated)</label>
+                                <input type="text" id="pTags" placeholder="SEO, Writing, Marketing">
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Save Prompt</button>
+                                <button type="button" class="btn btn-outline" onclick="resetForm()">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- List Tab -->
+                <div id="tab-list" class="tab-content hidden">
+                    <header class="content-header">
+                        <h1>Manage Prompts</h1>
+                        <button class="btn btn-primary" onclick="switchTab('add')">
+                            <i class="ph ph-plus"></i> New
+                        </button>
+                    </header>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="promptsTableBody">
+                                <!-- JS Injection -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Categories Tab -->
+                <div id="tab-categories" class="tab-content hidden">
+                    <header class="content-header">
+                        <h1>Manage Categories</h1>
+                    </header>
+
+                    <div class="form-container" style="margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1rem;">Add New Category</h3>
+                        <form id="categoryForm" style="display: flex; gap: 10px; align-items: flex-end;">
+                            <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                                <label>Category Name (Slug will be auto-generated)</label>
+                                <input type="text" id="catName" required placeholder="e.g. Social Media">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add Category</button>
+                        </form>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Slug</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="categoriesTableBody">
+                                <!-- JS Injection -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+        <div id="toast-container"></div>
+    </div>
+
+    <!-- Admin App Logic -->
+    <script src="app.js"></script>
 </body>
+
 </html>

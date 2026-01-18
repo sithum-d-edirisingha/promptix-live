@@ -1,35 +1,50 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+/* ================= FIREBASE (CDN IMPORTS) ================= */
+
+import { initializeApp } from
+  "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+
 import {
   getAuth,
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+} from
+  "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
 import {
   getFirestore,
   collection,
   addDoc,
   serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+} from
+  "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-/* 🔥 FIREBASE CONFIG (replace with yours if needed) */
+/* ================= FIREBASE CONFIG (REAL) ================= */
+
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID"
+  apiKey: "AIzaSyB2fzdOYzE1E0rSHyCzbLBYg-s_ikipOd0",
+  authDomain: "promptix-9fee0.firebaseapp.com",
+  projectId: "promptix-9fee0",
+  storageBucket: "promptix-9fee0.firebasestorage.app",
+  messagingSenderId: "313250506618",
+  appId: "1:313250506618:web:81f10265b4856019fbd8c3"
 };
+
+/* ================= INIT ================= */
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-/* UI ELEMENTS */
+/* ================= UI ================= */
+
 const loginBox = document.getElementById("loginBox");
 const adminPanel = document.getElementById("adminPanel");
 const loginError = document.getElementById("loginError");
 const status = document.getElementById("status");
 
-/* LOGIN */
+/* ================= LOGIN ================= */
+
 document.getElementById("loginBtn").onclick = () => {
   signInWithEmailAndPassword(
     auth,
@@ -40,7 +55,8 @@ document.getElementById("loginBtn").onclick = () => {
   });
 };
 
-/* AUTH STATE */
+/* ================= AUTH STATE ================= */
+
 onAuthStateChanged(auth, user => {
   if (user && user.email === "sithumdedirisingha@gmail.com") {
     loginBox.style.display = "none";
@@ -51,12 +67,14 @@ onAuthStateChanged(auth, user => {
   }
 });
 
-/* LOGOUT */
+/* ================= LOGOUT ================= */
+
 document.getElementById("logoutBtn").onclick = () => {
   signOut(auth);
 };
 
-/* ADD PROMPT */
+/* ================= ADD PROMPT ================= */
+
 document.getElementById("addPromptBtn").onclick = async () => {
   status.textContent = "Saving...";
 
@@ -65,7 +83,7 @@ document.getElementById("addPromptBtn").onclick = async () => {
       title: title.value.trim(),
       prompt: prompt.value.trim(),
       category: category.value.trim(),
-      imageUrl: "", // optional
+      imageUrl: "",
       likeCount: 0,
       copyCount: 0,
       createdAt: serverTimestamp()
